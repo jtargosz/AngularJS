@@ -1,0 +1,33 @@
+<h1 class="hidden-xs">Wyniki <span class="btn btn-primary pull-right">{{ step-1 }} / 10</span></h1>
+<button ng-if="step==11" ng-click="startNew()" class="btn btn-lg btn-primary center-block">Zagraj od nowa</button>
+<hr>
+<button ng-click="search = {wrong: 1}" class="btn btn-danger col-xs-12 col-md-3">Pokaż złe odpowiedzi</button>
+<button class="btn btn-primary pull-right col-xs-12 col-md-3" ng-click="search = NULL" class="btn btn-primary">Pokaż wszystkie odpowiedzi</button>
+<div class="clearfix"></div>
+<hr>
+<div class="table-responsive">
+    <table class="table table-hover" ng-if="allAnswers.length">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Etap</th>
+                <th>Twoja odpowiedź</th>
+                <th><b>Poprawna odpowiedź</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="answer in allAnswers| filter:search" class="{{ AnswerHint(answer.wrong) }}" ng-if="answer.selectedAnswer.length">
+                <td scope="row">{{answer.selectedAnswerStep}}</td>
+                <td>
+                    {{answer.selectedAnswer}}
+                    <br />
+                    <img class="img-responsive" width="200" src="flags/{{answer.selectedAnswerFlags}}" alt="">
+                </td>
+                <td><b>{{answer.goodAnswer}}</b>
+                    <br /><img class="img-responsive" width="200" src="flags/{{answer.goodFlags}}" alt=""></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<button ng-click="startNew()" class="btn btn-primary col-xs-12 col-md-3">Rozpocznij grę</button>
+<a ng-if="allAnswers.length<10" href="#/flags" class="btn btn-default col-xs-12 col-md-3 pull-right">Wróc do aktualnej rozgrywki</a>

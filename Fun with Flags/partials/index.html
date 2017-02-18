@@ -1,0 +1,25 @@
+<!-- {{visited}} -->
+<h1 class="text-center hidden-xs">
+Jaki kraj posiada taką flagę?
+<span class="btn btn-primary pull-right">{{ getStep() }} / 10</span>
+</h1>
+<img src="flags/{{ countries.flag_128 }}" class="img-responsive center-block" width="200" alt="" />
+<br />
+<form novalidate>
+    <div class="input-group" ng-repeat="country in question|orderBy:'name'" ng-if="country.name.length" style="margin-bottom:2px;">
+        <span class="input-group-addon">
+        <input ng-change="checkAnswer()" name="name" type="radio" id="{{ country.name }}" value="{{ country.name }}" ng-model="question.name">
+
+      </span>
+        <label class="form-control" for="{{ country.name }}">{{ country.name }}</label>
+    </div>
+</form>
+<hr>
+<!-- <button ng-click="checkAnswer()" class="btn btn-primary col-xs-12 col-md-6">Dalej</button> -->
+<button ng-click="getData()" class="btn btn-default col-xs-12 col-md-12">Losuj inne pytanie</button>
+<br />
+<p>&nbsp;</p>
+<blockquote ng-if="question.name">
+    Czy jesteś pewien, że to flaga <b>{{question.name}}</b> ?
+    <br />
+</blockquote>
