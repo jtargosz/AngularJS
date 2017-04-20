@@ -17,7 +17,7 @@
 - Przechowywanie odpowiedzi i wyświetlonych pytań w angular-storage
 - Pytania się nie powtarzają
 - Wykorzystanie biblioteki ngRoute
-- Baza danych JSON
+- Dane o flagach w formacie JSON zostały pobrane z ogólnodostępnej bazy https://github.com/hjnilsson/country-flags
 - Wyświetlanie wyników i ich filtrowanie (poprawne, niepoprawne)
 
 ----------
